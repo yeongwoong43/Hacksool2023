@@ -4,7 +4,6 @@ from metro_line import SungDongMetroLines
 def bfs(graph, start, end, level):
 	queue = []
 	queue.append(start)
-	print(queue)
 	visited = [False] * 15
 	visited[start] = True
 	while queue:
@@ -14,7 +13,7 @@ def bfs(graph, start, end, level):
 			queue.pop(0)
 			for j in graph[cur]:
 				if j == end:
-					print(level)
+					print("You must pass through " + str(level) + " station(s)")
 					return
 				if visited[j] == False:
 					queue.append(j)
@@ -23,4 +22,6 @@ def bfs(graph, start, end, level):
 graph = []
 SungDongMetroLines(graph)
 level = 1
-bfs(graph, 1, 3, level)
+start = int(input("Enter the starting station as a number 0 - 14\n"))
+end = int(input("Enter the ending station as a number 0 - 14\n"))
+bfs(graph, start, end, level)
