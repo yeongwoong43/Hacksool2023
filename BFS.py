@@ -1,24 +1,26 @@
-from metro_line import Station
+# from metro_line import Station
 from metro_line import SungDongMetroLines
 
-def bfs(graph, start, end, level):
-	queue = []
-	queue.append(start)
+
+def bfs(graph_, start_, end_, level_):
+	queue = [start_]
 	visited = [False] * 15
-	visited[start] = True
+	visited[start_] = True
 	while queue:
 		s = len(queue)
 		for i in range(s):
 			cur = queue[0]
 			queue.pop(0)
-			for j in graph[cur]:
-				if j == end:
-					print("You must pass through " + str(level) + " station(s)")
+			for j in graph_[cur]:
+				if j == end_:
+					print("You must pass through " + str(level_) + " station(s)")
 					return
-				if visited[j] == False:
+				if not visited[j]:
 					queue.append(j)
 					visited[j] = True
-		level += 1
+		level_ += 1
+
+
 graph = []
 SungDongMetroLines(graph)
 level = 1
